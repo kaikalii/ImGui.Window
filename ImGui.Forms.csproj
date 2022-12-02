@@ -3,14 +3,13 @@
     <TargetFramework>net6.0</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <PackageReleaseNotes>Previewversion</PackageReleaseNotes>
     <Description>Batteries-included window wrapper for ImGui.NET</Description>
     <PackageTags>ImGui.Window ImGui.NET Immediate Mode GUI</PackageTags>
     <Version>0.1.0</Version>
+    <Author>Kaikalii</Author>
     <PackageProjectUrl>https://github.com/kaikalii/ImGui.Window</PackageProjectUrl>
     <RepositoryUrl>https://github.com/kaikalii/ImGui.Window</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <OutputType>Exe</OutputType>
     <Nullable>Enable</Nullable>
   </PropertyGroup>
 
