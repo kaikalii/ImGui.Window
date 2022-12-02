@@ -35,7 +35,7 @@ namespace ImGui.Window
 
         #endregion
 
-        public Form MainForm => _executionContext.MainForm;
+        public GuiWindow MainForm => _executionContext.MainForm;
 
         internal Sdl2Window Window => _executionContext.Window;
 
@@ -47,14 +47,20 @@ namespace ImGui.Window
 
         #endregion
 
-        public Application(Form form)
+        public Application(GuiWindow form)
         {
             AppDomain.CurrentDomain.UnhandledException += OnUnhandledException;
             UnhandledException += (obj, e) => { };
 
             // Create window
             VeldridStartup.CreateWindowAndGraphicsDevice(
-                new WindowCreateInfo(100, 100, form.Width, form.Height, WindowState.Normal, form.Title),
+                new WindowCreateInfo(
+                    (int)form.Position.X,
+                    (int)form.Position.Y,
+                    form.Width,
+                    form.Height,
+                    WindowState.Normal,
+                    form.Title),
                 new GraphicsDeviceOptions(true, null, true, ResourceBindingModel.Improved, true, true),
                 out var window,
                 out var gd);
@@ -94,10 +100,7 @@ namespace ImGui.Window
             FontFactory.Dispose();
         }
 
-        public void Exit()
-        {
-            Window.Close();
-        }
+        public void Exit() => Window.Close();
 
         private bool UpdateFrame(CommandList cl)
         {
@@ -198,7 +201,7 @@ namespace ImGui.Window
 
     class ExecutionContext
     {
-        public Form MainForm { get; }
+        public GuiWindow MainForm { get; }
 
         public GraphicsDevice GraphicsDevice { get; }
 
@@ -206,7 +209,7 @@ namespace ImGui.Window
 
         public ImGuiRenderer Renderer { get; }
 
-        public ExecutionContext(Form mainForm, GraphicsDevice gd, Sdl2Window window)
+        public ExecutionContext(GuiWindow mainForm, GraphicsDevice gd, Sdl2Window window)
         {
             MainForm = mainForm;
             GraphicsDevice = gd;

@@ -4,15 +4,11 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageReleaseNotes>Previewversion</PackageReleaseNotes>
-    <Authors>onepiecefreak</Authors>
-    <Company />
-    <Copyright>Fan Translators International</Copyright>
-    <Description>A WinForms-inspired object-oriented framework around Dear ImGui (https://github.com/ocornut/imgui)</Description>
+    <Description>Batteries-included window wrapper for ImGui.NET</Description>
     <PackageTags>ImGui.Window ImGui.NET Immediate Mode GUI</PackageTags>
-    <Version>1.0.21</Version>
-    <AssemblyVersion>1.0.21.0</AssemblyVersion>
-    <PackageProjectUrl>https://github.com/FanTranslatorsInternational/ImGui.Window</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/FanTranslatorsInternational/ImGui.Window</RepositoryUrl>
+    <Version>0.1.0</Version>
+    <PackageProjectUrl>https://github.com/kaikalii/ImGui.Window</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/kaikalii/ImGui.Window</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <OutputType>Exe</OutputType>
     <Nullable>Enable</Nullable>

@@ -1,6 +1,4 @@
-using System;
 using ImGui.Window;
-using ImGuiNET;
 using static ImGuiNET.ImGui;
 
 class Program
@@ -10,17 +8,19 @@ class Program
         new MyGui().Show();
     }
 
-    class MyGui : Form
+    class MyGui : GuiWindow
     {
         private bool boolean = false;
-        public MyGui()
-        {
-            Application = new(this);
-        }
-
+        private float number = 0f;
+        private string str = "Hello World!";
+        public MyGui() => Application = new(this);
         public override void Ui()
         {
+            // Put ImGui.NET calls here
             Checkbox("Boolean", ref boolean);
+            SliderFloat("Number", ref number, 0f, 10f);
+            InputText("String", ref str, 1000);
+            LabelText("", str);
         }
     }
 }

@@ -12,7 +12,7 @@ using Veldrid.Sdl2;
 namespace ImGui.Window
 {
     // HINT: Does not derive from Container to not be a component and therefore nestable into other containers
-    public abstract class Form
+    public abstract class GuiWindow
     {
 
         private Image? _icon;
@@ -22,6 +22,7 @@ namespace ImGui.Window
 
         protected Application? Application { get; set; }
         public string Title { get; set; } = string.Empty;
+        public Vector2 Position { get; set; } = new Vector2(100, 100);
         public Vector2 Size { get; set; } = new Vector2(700, 400);
         public int Width => (int)Size.X;
         public int Height => (int)Size.Y;
@@ -75,6 +76,7 @@ namespace ImGui.Window
             ImGuiNET.ImGui.Begin(Title, ImGuiWindowFlags.NoCollapse | ImGuiWindowFlags.NoDecoration | ImGuiWindowFlags.NoMove);
 
             ImGuiNET.ImGui.SetWindowSize(Size, ImGuiCond.Always);
+            ImGuiNET.ImGui.SetWindowPos(Position, ImGuiCond.Always);
 
             ImGuiNET.ImGui.PushStyleVar(ImGuiStyleVar.WindowRounding, 0);
             ImGuiNET.ImGui.PushStyleVar(ImGuiStyleVar.FrameBorderSize, 0);
@@ -107,22 +109,13 @@ namespace ImGui.Window
             ImGuiNET.ImGui.End();
         }
 
-        protected void Close()
-        {
-            Application?.Window.Close();
-        }
+        protected virtual void Close() => Application?.Window.Close();
 
         #region Event Invokers
 
-        internal void OnResized()
-        {
-            Resized?.Invoke(this, new EventArgs());
-        }
+        internal void OnResized() => Resized?.Invoke(this, new EventArgs());
 
-        internal void OnLoad()
-        {
-            Load?.Invoke(this, new EventArgs());
-        }
+        internal void OnLoad() => Load?.Invoke(this, new EventArgs());
 
         internal async Task OnClosing(ClosingEventArgs e)
         {
@@ -130,15 +123,9 @@ namespace ImGui.Window
             await Closing.Invoke(this, e);
         }
 
-        private void OnDragDrop(DragDropEvent e)
-        {
-            DragDrop?.Invoke(this, e);
-        }
+        private void OnDragDrop(DragDropEvent e) => DragDrop?.Invoke(this, e);
 
-        public void Show()
-        {
-            Application?.Execute();
-        }
+        public void Show() => Application?.Execute();
 
         public abstract void Ui();
 
