@@ -6,7 +6,9 @@
     <Description>Batteries-included window wrapper for ImGui.NET</Description>
     <PackageTags>ImGui.Window ImGui.NET Immediate Mode GUI</PackageTags>
     <Version>0.1.0</Version>
-    <Author>Kaikalii</Author>
+    <Authors>Kaikalii</Authors>
+    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageProjectUrl>https://github.com/kaikalii/ImGui.Window</PackageProjectUrl>
     <RepositoryUrl>https://github.com/kaikalii/ImGui.Window</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
